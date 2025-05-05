@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error Occurred</title>
+</head>
+<body>
+<h1>Error Occurred</h1>
+<p><strong>Error Details:</strong></p>
+<pre th:text="${errorMessage}">Unknown error</pre>
+
+<a href="/admin/dashboard">Back to Dashboard</a>
+</body>
+</html>

@@ -1,0 +1,1423 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>UrbanEats - Food store</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Place favicon.png in the root directory -->
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+    <!-- Font Icons css -->
+    <link rel="stylesheet" href="css/font-icons.css">
+    <!-- plugins css -->
+    <link rel="stylesheet" href="css/plugins.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+
+<!-- Body main wrapper start -->
+<div class="body-wrapper">
+
+    <!-- HEADER AREA START (header-4) -->
+<header class="ltn__header-area ltn__header-5 ltn__header-transparent gradient-color-4---">
+    <!-- ltn__header-top-area start
+    <div class="ltn__header-top-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="ltn__top-bar-menu">
+                        <ul>
+                            <li><a href="locations.html"><i class="icon-placeholder"></i> 15/A, Nest Tower, NYC</a></li>
+                            <li><a href="mailto:info@webmail.com?Subject=Flower%20greetings%20to%20you"><i class="icon-mail"></i> info@webmail.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="top-bar-right text-end">
+                        <div class="ltn__top-bar-menu">
+                            <ul>
+                                <li>
+
+                                </li>
+                                <li>
+
+                                    <div class="ltn__social-media">
+                                        <ul>
+                                            <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+                                            <li><a href="#" title="Dribbble"><i class="fab fa-dribbble"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    ltn__header-top-area end -->
+
+    <!-- ltn__header-middle-area start -->
+    <div class="ltn__header-middle-area ltn__header-sticky ltn__sticky-bg-white ltn__logo-right-menu-option sticky-active-into-mobile--- plr--9---">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="site-logo-wrap">
+                        <div class="site-logo">
+                            <a th:href="@{/}"> <img src="./img/logo.png" alt="Logo"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col header-menu-column menu-color-white---">
+                    <div class="header-menu d-none d-xl-block">
+                        <nav>
+                            <div class="ltn__main-menu">
+                                <ul>
+                                    <li><a th:href="@{/}">Home</a></li>
+                                    <li><a th:href="@{/about}">About</a></li>
+                                    <li><a th:href="@{/shop-grid}">Shop</a></li>
+                                    <li><a th:href="@{/contact}">Contact</a></li>
+                                    <li class="special-link"><a th:href="@{/contact}">GET A QUOTE</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="ltn__header-options ltn__header-options-2">
+                    <!-- header-search-1 -->
+                    <div class="header-search-wrap">
+                        <div class="header-search-1">
+                            <div class="search-icon">
+                                <i class="icon-search for-search-show"></i>
+                                <i class="icon-cancel for-search-close"></i>
+                            </div>
+                        </div>
+                        <div class="header-search-1-form">
+                            <form id="#" method="get" action="#">
+                                <input type="text" name="search" value="" placeholder="Search here..."/>
+                                <button type="submit">
+                                    <span><i class="icon-search"></i></span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- user-menu -->
+                    <div class="ltn__drop-menu user-menu" id="userMenuContainer">
+                        <ul>
+                            <li>
+                                <a href="#"><i class="icon-user"></i></a>
+                                <ul id="userMenu">
+                                    <li th:if="${session.loggedInUser == null}"><a th:href="@{/login}">Sign in</a></li>
+                                    <li th:if="${session.loggedInUser == null}"><a th:href="@{/register}">Register</a></li>
+
+                                    <li th:if="${session.loggedInUser != null}">
+                                        <span style="font-weight: 600;" th:text="${session.loggedInUser.username}">Username</span>
+                                    </li>
+                                    <li th:if="${session.loggedInUser != null}"><a th:href="@{/account}">My Account</a></li>
+                                    <li th:if="${session.loggedInUser != null}"><a th:href="@{/logout}">Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- mini-cart -->
+                    <div class="mini-cart-icon">
+                        <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
+                            <i class="icon-shopping-cart"></i>
+                            <sup th:text="${itemCount}"></sup> <!-- Dynamically display item count -->
+                        </a>
+                    </div>
+
+
+                    <!-- Mobile Menu Button -->
+                    <div class="mobile-menu-toggle d-xl-none">
+                        <a href="#ltn__utilize-mobile-menu" class="ltn__utilize-toggle">
+                            <svg viewBox="0 0 800 600">
+                                <path d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200" id="top"></path>
+                                <path d="M300,320 L540,320" id="middle"></path>
+                                <path d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190" id="bottom" transform="translate(480, 320) scale(1, -1) translate(-480, -318) "></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ltn__header-middle-area end -->
+</header>
+    <!-- HEADER AREA END -->
+
+    <!-- Utilize Cart Menu Start -->
+    <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">
+        <div class="ltn__utilize-menu-inner ltn__scrollbar">
+            <div class="ltn__utilize-menu-head">
+                <span class="ltn__utilize-menu-title">Cart</span>
+                <button class="ltn__utilize-close">×</button>
+            </div>
+
+            <div class="mini-cart-product-area ltn__scrollbar">
+                <div th:each="item : ${globalCartItems}" class="mini-cart-item clearfix">
+                    <div class="mini-cart-img">
+                        <a th:href="@{/product-details/{id}(id=${item.productId})}">
+                            <img th:src="@{/uploads/{imageName}(imageName=${item.imageMain})}" alt="Product Image">
+                        </a>
+                        <span class="mini-cart-item-delete">
+                        <a th:href="@{/cart/remove/{id}(id=${item.cartId})}">
+                            <i class="icon-cancel"></i>
+                        </a>
+                    </span>
+                    </div>
+                    <div class="mini-cart-info">
+                        <h6>
+                            <a th:href="@{/product-details/{id}(id=${item.productId})}" th:text="${item.productName}"></a>
+                        </h6>
+                        <span class="mini-cart-quantity" th:text="${item.quantity} + ' x $' + ${item.price}"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mini-cart-footer">
+                <div class="mini-cart-sub-total">
+                    <h5>Subtotal: <span th:text="'$' + ${globalCartSubtotal}">$0.00</span></h5>
+                </div>
+                <div class="btn-wrapper">
+                    <a th:href="@{/cart}" class="theme-btn-1 btn btn-effect-1">View Cart</a>
+                    <a th:href="@{/checkout}" class="theme-btn-2 btn btn-effect-2">Checkout</a>
+                </div>
+                <p>Free Shipping on All Orders Over $100!</p>
+            </div>
+        </div>
+    </div>
+    <!-- Utilize Cart Menu End -->
+
+    <!-- Utilize Mobile Menu Start -->
+    <div id="ltn__utilize-mobile-menu" class="ltn__utilize ltn__utilize-mobile-menu">
+        <div class="ltn__utilize-menu-inner ltn__scrollbar">
+            <div class="ltn__utilize-menu-head">
+                <div class="site-logo">
+                    <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+                </div>
+                <button class="ltn__utilize-close">×</button>
+            </div>
+            <div class="ltn__utilize-menu-search-form">
+                <form action="#">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            <div class="ltn__utilize-menu">
+                <ul>
+                    <li><a href="#">Home</a>
+                        <ul class="sub-menu">
+                            <li><a href="index.html">Home Pages 01</a></li>
+                            <li><a href="index-2.html">Home Pages 02</a></li>
+                            <li><a href="index-3.html">Home Pages 03</a></li>
+                            <li><a href="index-4.html">Home Pages 04</a></li>
+                            <li><a href="index-5.html">Home Pages 05  <span class="menu-item-badge">video</span></a></li>
+                            <li><a href="index-6.html">Home Pages 06</a></li>
+                            <li><a href="index-7.html">Home Pages 07</a></li>
+                            <li><a href="index-8.html">Home Pages 08</a></li>
+                            <li><a href="index-9.html">Home Pages 09</a></li>
+                            <li><a href="index-10.html">Home Pages 10</a></li>
+                            <li><a href="index-11.html">Home Pages 11 <span class="menu-item-badge">Service</span></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">About</a>
+                        <ul class="sub-menu">
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="service.html">Services</a></li>
+                            <li><a href="service-details.html">Service Details</a></li>
+                            <li><a href="portfolio.html">Portfolio</a></li>
+                            <li><a href="portfolio-2.html">Portfolio - 02</a></li>
+                            <li><a href="portfolio-details.html">Portfolio Details</a></li>
+                            <li><a href="team.html">Team</a></li>
+                            <li><a href="team-details.html">Team Details</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="locations.html">Google Map Locations</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Shop</a>
+                        <ul class="sub-menu">
+                            <li><a href="shop.html">Shop</a></li>
+                            <li><a href="shop-grid.html">Shop Grid</a></li>
+                            <li><a href="shop-left-sidebar.html">Shop Left sidebar</a></li>
+                            <li><a href="shop-right-sidebar.html">Shop right sidebar</a></li>
+                            <li><a href="product-details.html">Shop details </a></li>
+                            <li><a href="cart.html">Cart</a></li>
+                            <li><a href="wishlist.html">Wishlist</a></li>
+                            <li><a href="checkout.html">Checkout</a></li>
+                            <li><a href="order-tracking.html">Order Tracking</a></li>
+                            <li><a href="account.html">My Account</a></li>
+                            <li><a href="login.html">Sign in</a></li>
+                            <li><a href="register.html">Register</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">News</a>
+                        <ul class="sub-menu">
+                            <li><a href="blog.html">News</a></li>
+                            <li><a href="blog-grid.html">News Grid</a></li>
+                            <li><a href="blog-left-sidebar.html">News Left sidebar</a></li>
+                            <li><a href="blog-right-sidebar.html">News Right sidebar</a></li>
+                            <li><a href="blog-details.html">News details</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Pages</a>
+                        <ul class="sub-menu">
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="service.html">Services</a></li>
+                            <li><a href="service-details.html">Service Details</a></li>
+                            <li><a href="portfolio.html">Portfolio</a></li>
+                            <li><a href="portfolio-2.html">Portfolio - 02</a></li>
+                            <li><a href="portfolio-details.html">Portfolio Details</a></li>
+                            <li><a href="team.html">Team</a></li>
+                            <li><a href="team-details.html">Team Details</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="history.html">History</a></li>
+                            <li><a href="contact.html">Appointment</a></li>
+                            <li><a href="locations.html">Google Map Locations</a></li>
+                            <li><a href="404.html">404</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="coming-soon.html">Coming Soon</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
+                <ul>
+                    <li>
+                        <a href="account.html" title="My Account">
+                            <span class="utilize-btn-icon">
+                                <i class="far fa-user"></i>
+                            </span>
+                            My Account
+                        </a>
+                    </li>
+                    <li>
+                        <a href="wishlist.html" title="Wishlist">
+                            <span class="utilize-btn-icon">
+                                <i class="far fa-heart"></i>
+                                <sup>3</sup>
+                            </span>
+                            Wishlist
+                        </a>
+                    </li>
+                    <li>
+                        <a href="cart.html" title="Shoping Cart">
+                            <span class="utilize-btn-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                                <sup>5</sup>
+                            </span>
+                            Shoping Cart
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="ltn__social-media-2">
+                <ul>
+                    <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
+                    <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Utilize Mobile Menu End -->
+
+    <div class="ltn__utilize-overlay"></div>
+
+    <!-- SLIDER AREA START (slider-3) -->
+    <div class="ltn__slider-area ltn__slider-3  section-bg-1">
+        <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1">
+            <!-- ltn__slide-item -->
+            <div class="ltn__slide-item ltn__slide-item-2 ltn__slide-item-3">
+                <div class="ltn__slide-item-inner">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 align-self-center">
+                                <div class="slide-item-info">
+                                    <div class="slide-item-info-inner ltn__slide-animation">
+                                        <div class="slide-video mb-50 d-none">
+                                            <a class="ltn__video-icon-2 ltn__video-icon-2-border" href="https://www.youtube.com/embed/ATI7vfCgwXE?autoplay=1&showinfo=0" data-rel="lightcase:myCollection">
+                                                <i class="fa fa-play"></i>
+                                            </a>
+                                        </div>
+                                        <h6 class="slide-sub-title animated"><img src="img/icons/icon-img/1.png" alt="#"> 100% genuine Products</h6>
+                                        <h1 class="slide-title animated ">Tasty & Healthy <br>  Organic Food</h1>
+                                        <div class="slide-brief animated d-none">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                                        </div>
+                                        <div class="btn-wrapper animated">
+                                            <a th:href="@{/products}" class="theme-btn-1 btn btn-effect-1 text-uppercase">Explore Products</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="max-width: 922px; max-height: 467px; margin-right:100px" class="slide-item-img">
+                                    <img src="https://m.economictimes.com/thumb/msid-89885004,width-1200,height-900,resizemode-4,imgsize-137412/healthy-food_think.jpg" alt="#">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ltn__slide-item -->
+            <div class="ltn__slide-item ltn__slide-item-2 ltn__slide-item-3">
+                <div class="ltn__slide-item-inner  text-right text-end">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 align-self-center">
+                                <div class="slide-item-info">
+                                    <div class="slide-item-info-inner ltn__slide-animation">
+                                        <h6 class="slide-sub-title animated"><img src="img/icons/icon-img/1.png" alt="#"> 100% genuine Products</h6>
+                                        <h1 class="slide-title animated ">Our Garden's  Most <br>   Favorite Food</h1>
+                                        <div class="slide-brief animated">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                                        </div>
+                                        <div class="btn-wrapper animated">
+                                            <a href="shop.html" class="theme-btn-1 btn btn-effect-1 text-uppercase">Explore Products</a>
+                                            <a href="about.html" class="btn btn-transparent btn-effect-3 text-uppercase">LEARN MORE</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="max-width: 920px; max-height: 540px; margin-bottom: 200px; margin-left: 100px" class="slide-item-img slide-img-left">
+                                    <img src="https://i0.wp.com/www.healthfitnessrevolution.com/wp-content/uploads/2019/09/iStock-1081090762.jpg?fit=1254%2C836&ssl=1" alt="#">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+        </div>
+    </div>
+    <!-- SLIDER AREA END -->
+
+    <!-- BANNER AREA START -->
+    <div class="ltn__banner-area mt-120 mt--90 d-none">
+        <div class="container">
+            <div class="row ltn__custom-gutter--- justify-content-center">
+                <div class="col-lg-4 col-md-6">
+                    <div class="ltn__banner-item">
+                        <div class="ltn__banner-img">
+                            <a href="shop.html"><img src="https://img.freepik.com/free-psd/refreshing-fruit-smoothies-glasses-with-fresh-fruit_632498-51074.jpg?semt=ais_hybrid&w=740" alt="Banner Image"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="ltn__banner-item">
+                        <div class="ltn__banner-img">
+                            <a href="shop.html"><img src="https://assets.idahopreferred.com/uploads/2023/09/21171739/AdobeStock_236607219-scaled.jpeg" alt="Banner Image"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="ltn__banner-item">
+                        <div class="ltn__banner-img">
+                            <a href="shop.html"><img src="https://media.istockphoto.com/id/1156027693/photo/fresh-salmon-steak-with-a-variety-of-seafood-and-herbs.jpg?s=612x612&w=0&k=20&c=FnY31V37yG5Ip4ejRttubUHBS8PPTaZfHHukDsEDjc0=" alt="Banner Image"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BANNER AREA END -->
+
+    <!-- BANNER AREA START -->
+    <div class="ltn__banner-area mt-120">
+        <div class="container">
+            <div class="row ltn__custom-gutter--- justify-content-center">
+                <div class="col-lg-6 col-md-6">
+                    <div class="ltn__banner-item">
+                        <div class="ltn__banner-img">
+                            <a th:href="@{/shop-grid}"><img src="/img/new/juice.png" alt="Banner Image"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ltn__banner-item">
+                                <div class="ltn__banner-img">
+                                    <a th:href="@{/shop-grid}"><img src="/img/new/driedfood.png" alt="Banner Image"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="ltn__banner-item">
+                                <div class="ltn__banner-img">
+                                    <a th:href="@{/shop-grid}"><img src="/img/new/fishnmeet.png" alt="Banner Image"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BANNER AREA END -->
+
+    <!-- PRODUCT TAB AREA START (product-item-3) -->
+    <div class="ltn__product-tab-area ltn__product-gutter pt-85 pb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title-area ltn__section-title-2 text-center">
+                        <h1 class="section-title">Our Products</h1>
+                    </div>
+                    <div class="ltn__tab-menu ltn__tab-menu-2 ltn__tab-menu-top-right-- text-uppercase text-center">
+                        <div class="nav">
+                            <a class="active show" data-bs-toggle="tab" href="#liton_tab_3_1">Food & Drinks</a>
+                            <a data-bs-toggle="tab" href="#liton_tab_3_2" class="">Vegetables</a>
+                            <a data-bs-toggle="tab" href="#liton_tab_3_3" class="">Dried Foods</a>
+                            <a data-bs-toggle="tab" href="#liton_tab_3_4" class="">Bread & Cake</a>
+                            <a data-bs-toggle="tab" href="#liton_tab_3_5" class="">Fish & Meat</a>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade active show" id="liton_tab_3_1">
+                            <div class="ltn__product-tab-content-inner">
+                                <div class="row ltn__tab-product-slider-one-active slick-arrow-1">
+                                    <div class="col-lg-12" th:each="product : ${productsByCategory['Food and Drinks']}">
+                                        <div class="ltn__product-item ltn__product-item-3 text-center">
+                                            <div class="product-img">
+                                                <a th:href="@{/product-details/{id}(id=${product.productId})}">
+                                                    <img th:src="@{/uploads/{imageName}(imageName=${product.imageMain})}" alt="Product Image">
+                                                </a>
+                                                <div class="product-badge">
+                                                    <ul>
+                                                        <li class="sale-badge" th:text="${product.badge}">Badge</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="product-hover-action">
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal"
+                                                               th:data-product-id="${product.productId}"
+                                                               class="quick-view-btn">
+                                                                <i class="far fa-eye"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <form th:action="@{/add-to-cart}" method="post" class="cart-form">
+                                                                <input type="hidden" name="productId" th:value="${product.productId}">
+                                                                <input type="hidden" name="quantity" value="1">
+                                                                <a href="javascript:void(0);" onclick="this.closest('form').submit();" title="Add to Cart">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                </a>
+                                                            </form>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" title="Wishlist" data-bs-toggle="modal" data-bs-target="#liton_wishlist_modal">
+                                                                <i class="far fa-heart"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="product-info">
+                                                <h2 class="product-title" th:text="${product.name}">Product Name</h2>
+                                                <div class="product-price">
+                                                    <span th:text="'$' + ${product.price}">$0.00</span>
+                                                    <del th:if="${product.oldPrice != null}" th:text="'$' + ${product.oldPrice}">$0.00</del>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="liton_tab_3_2">
+                            <div class="ltn__product-tab-content-inner">
+                                <div class="row ltn__tab-product-slider-one-active slick-arrow-1">
+                                    <div class="col-lg-12" th:each="product : ${productsByCategory['Vegetables']}">
+                                        <div class="ltn__product-item ltn__product-item-3 text-center">
+                                            <div class="product-img">
+                                                <a th:href="@{/product-details/{id}(id=${product.productId})}">
+                                                    <img th:src="@{/uploads/{imageName}(imageName=${product.imageMain})}" alt="Product Image">
+                                                </a>
+                                                <div class="product-badge">
+                                                    <ul>
+                                                        <li class="sale-badge" th:text="${product.badge}">Badge</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="product-hover-action">
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal"
+                                                               th:data-product-id="${product.productId}"
+                                                               class="quick-view-btn">
+                                                                <i class="far fa-eye"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <form th:action="@{/add-to-cart}" method="post" class="cart-form">
+                                                                <input type="hidden" name="productId" th:value="${product.productId}">
+                                                                <input type="hidden" name="quantity" value="1">
+                                                                <a href="javascript:void(0);" onclick="this.closest('form').submit();" title="Add to Cart">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                </a>
+                                                            </form>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" title="Wishlist" data-bs-toggle="modal" data-bs-target="#liton_wishlist_modal">
+                                                                <i class="far fa-heart"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="product-info">
+                                                <h2 class="product-title" th:text="${product.name}">Product Name</h2>
+                                                <div class="product-price">
+                                                    <span th:text="'$' + ${product.price}">$0.00</span>
+                                                    <del th:if="${product.oldPrice != null}" th:text="'$' + ${product.oldPrice}">$0.00</del>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="liton_tab_3_3">
+                            <div class="ltn__product-tab-content-inner">
+                                <div class="row ltn__tab-product-slider-one-active slick-arrow-1">
+                                    <div class="col-lg-12" th:each="product : ${productsByCategory['Dried Foods']}">
+                                        <div class="ltn__product-item ltn__product-item-3 text-center">
+                                            <div class="product-img">
+                                                <a th:href="@{/product-details/{id}(id=${product.productId})}">
+                                                    <img th:src="@{/uploads/{imageName}(imageName=${product.imageMain})}" alt="Product Image">
+                                                </a>
+                                                <div class="product-badge">
+                                                    <ul>
+                                                        <li class="sale-badge" th:text="${product.badge}">Badge</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="product-hover-action">
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal"
+                                                               th:data-product-id="${product.productId}"
+                                                               class="quick-view-btn">
+                                                                <i class="far fa-eye"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <form th:action="@{/add-to-cart}" method="post" class="cart-form">
+                                                                <input type="hidden" name="productId" th:value="${product.productId}">
+                                                                <input type="hidden" name="quantity" value="1">
+                                                                <a href="javascript:void(0);" onclick="this.closest('form').submit();" title="Add to Cart">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                </a>
+                                                            </form>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" title="Wishlist" data-bs-toggle="modal" data-bs-target="#liton_wishlist_modal">
+                                                                <i class="far fa-heart"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="product-info">
+                                                <h2 class="product-title" th:text="${product.name}">Product Name</h2>
+                                                <div class="product-price">
+                                                    <span th:text="'$' + ${product.price}">$0.00</span>
+                                                    <del th:if="${product.oldPrice != null}" th:text="'$' + ${product.oldPrice}">$0.00</del>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="liton_tab_3_4">
+                            <div class="ltn__product-tab-content-inner">
+                                <div class="row ltn__tab-product-slider-one-active slick-arrow-1">
+                                    <div class="col-lg-12" th:each="product : ${productsByCategory['Bread and Cake']}">
+                                        <div class="ltn__product-item ltn__product-item-3 text-center">
+                                            <div class="product-img">
+                                                <a th:href="@{/product-details/{id}(id=${product.productId})}">
+                                                    <img th:src="@{/uploads/{imageName}(imageName=${product.imageMain})}" alt="Product Image">
+                                                </a>
+                                                <div class="product-badge">
+                                                    <ul>
+                                                        <li class="sale-badge" th:text="${product.badge}">Badge</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="product-hover-action">
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal"
+                                                               th:data-product-id="${product.productId}"
+                                                               class="quick-view-btn">
+                                                                <i class="far fa-eye"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <form th:action="@{/add-to-cart}" method="post" class="cart-form">
+                                                                <input type="hidden" name="productId" th:value="${product.productId}">
+                                                                <input type="hidden" name="quantity" value="1">
+                                                                <a href="javascript:void(0);" onclick="this.closest('form').submit();" title="Add to Cart">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                </a>
+                                                            </form>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" title="Wishlist" data-bs-toggle="modal" data-bs-target="#liton_wishlist_modal">
+                                                                <i class="far fa-heart"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="product-info">
+                                                <h2 class="product-title" th:text="${product.name}">Product Name</h2>
+                                                <div class="product-price">
+                                                    <span th:text="'$' + ${product.price}">$0.00</span>
+                                                    <del th:if="${product.oldPrice != null}" th:text="'$' + ${product.oldPrice}">$0.00</del>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="liton_tab_3_5">
+                            <div class="ltn__product-tab-content-inner">
+                                <div class="row ltn__tab-product-slider-one-active slick-arrow-1">
+                                    <div class="col-lg-12" th:each="product : ${productsByCategory['Fish and Meat']}">
+                                        <div class="ltn__product-item ltn__product-item-3 text-center">
+                                            <div class="product-img">
+                                                <a th:href="@{/product-details/{id}(id=${product.productId})}">
+                                                    <img th:src="@{/uploads/{imageName}(imageName=${product.imageMain})}" alt="Product Image">
+                                                </a>
+                                                <div class="product-badge">
+                                                    <ul>
+                                                        <li class="sale-badge" th:text="${product.badge}">Badge</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="product-hover-action">
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal"
+                                                               th:data-product-id="${product.productId}"
+                                                               class="quick-view-btn">
+                                                                <i class="far fa-eye"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <form th:action="@{/add-to-cart}" method="post" class="cart-form">
+                                                                <input type="hidden" name="productId" th:value="${product.productId}">
+                                                                <input type="hidden" name="quantity" value="1">
+                                                                <a href="javascript:void(0);" onclick="this.closest('form').submit();" title="Add to Cart">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                </a>
+                                                            </form>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" title="Wishlist" data-bs-toggle="modal" data-bs-target="#liton_wishlist_modal">
+                                                                <i class="far fa-heart"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="product-info">
+                                                <h2 class="product-title" th:text="${product.name}">Product Name</h2>
+                                                <div class="product-price">
+                                                    <span th:text="'$' + ${product.price}">$0.00</span>
+                                                    <del th:if="${product.oldPrice != null}" th:text="'$' + ${product.oldPrice}">$0.00</del>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- PRODUCT TAB AREA END -->
+
+    <!-- COUNTDOWN AREA START -->
+    <div class="ltn__call-to-action-area ltn__call-to-action-4 section-bg-1 pt-110 pb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <img src="img/banner/11.png" alt="#">
+                </div>
+                <div class="col-lg-7">
+                    <div class="call-to-action-inner call-to-action-inner-4 text-color-white--- text-center---">
+                        <div class="section-title-area ltn__section-title-2 text-center---">
+                            <h6 class="ltn__secondary-color">Todays Hot Deals</h6>
+                            <h1 class="section-title">Original Stock Honey <br>  Combo Package</h1>
+                        </div>
+                        <div class="ltn__countdown ltn__countdown-3 bg-white--" data-countdown="2024/12/28"></div>
+                        <div class="btn-wrapper animated">
+                            <a href="shop.html" class="theme-btn-1 btn btn-effect-1 text-uppercase">Shop now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- COUNTDOWN AREA END -->
+
+    <!-- VIDEO AREA START -->
+    <div class="ltn__video-popup-area ltn__video-popup-margin">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ltn__video-bg-img ltn__video-popup-height-600 bg-overlay-black-10-- bg-image" data-bg="img/bg/15.jpg">
+                        <a class="ltn__video-icon-2 ltn__video-icon-2-border" href="https://www.youtube.com/embed/ATI7vfCgwXE?autoplay=1&showinfo=0" data-rel="lightcase:myCollection">
+                            <i class="fa fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- VIDEO AREA END -->
+
+    <div class="ltn__testimonial-area section-bg-1 pt-290 pb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title-area ltn__section-title-2 text-center">
+                        <h6 class="section-subtitle ltn__secondary-color">// Testimonials</h6>
+                        <h1 class="section-title">Clients Feedbacks<span>.</span></h1>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feedback Form -->
+            <div class="row justify-content-center mb-4">
+                <div class="col-md-6">
+                    <form id="feedbackForm">
+                        <div class="form-group mb-3">
+                            <input type="text" id="name" class="form-control" placeholder="Your Name" required />
+                        </div>
+                        <div class="form-group mb-3">
+                            <textarea id="message" class="form-control" placeholder="Your Feedback" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn theme-btn-1 btn-effect-1" type="submit">Submit Feedback</button>
+                        </div>
+                        <div id="feedbackSuccess" style="display:none;" class="text-success text-center">Thanks for your feedback!</div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Display Feedbacks Dynamically -->
+            <div class="row" id="feedbacksContainer">
+                <!-- Feedbacks will load here from MongoDB -->
+            </div>
+        </div>
+    </div>
+    <!-- TESTIMONIAL AREA END -->
+
+    <!-- BLOG AREA START (blog-3) -->
+    <div class="ltn__blog-area pt-115 pb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title-area ltn__section-title-2 text-center">
+                        <h1 class="section-title white-color---">Leatest Blog</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row  ltn__blog-slider-one-active slick-arrow-1 ltn__blog-item-3-normal">
+                <!-- Blog Item -->
+                <div class="col-lg-12">
+                    <div class="ltn__blog-item ltn__blog-item-3">
+                        <div class="ltn__blog-img">
+                            <a href="blog-details.html"><img src="img/blog/1.jpg" alt="#"></a>
+                        </div>
+                        <div class="ltn__blog-brief">
+                            <div class="ltn__blog-meta">
+                                <ul>
+                                    <li class="ltn__blog-author">
+                                        <a href="#"><i class="far fa-user"></i>by: Admin</a>
+                                    </li>
+                                    <li class="ltn__blog-tags">
+                                        <a href="#"><i class="fas fa-tags"></i>Services</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h3 class="ltn__blog-title"><a href="blog-details.html">Common Engine Oil Problems and Solutions</a></h3>
+                            <div class="ltn__blog-meta-btn">
+                                <div class="ltn__blog-meta">
+                                    <ul>
+                                        <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>June 24, 2020</li>
+                                    </ul>
+                                </div>
+                                <div class="ltn__blog-btn">
+                                    <a href="blog-details.html">Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blog Item -->
+                <div class="col-lg-12">
+                    <div class="ltn__blog-item ltn__blog-item-3">
+                        <div class="ltn__blog-img">
+                            <a href="blog-details.html"><img src="img/blog/2.jpg" alt="#"></a>
+                        </div>
+                        <div class="ltn__blog-brief">
+                            <div class="ltn__blog-meta">
+                                <ul>
+                                    <li class="ltn__blog-author">
+                                        <a href="#"><i class="far fa-user"></i>by: Admin</a>
+                                    </li>
+                                    <li class="ltn__blog-tags">
+                                        <a href="#"><i class="fas fa-tags"></i>Services</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h3 class="ltn__blog-title"><a href="blog-details.html">How and when to replace brake rotors</a></h3>
+                            <div class="ltn__blog-meta-btn">
+                                <div class="ltn__blog-meta">
+                                    <ul>
+                                        <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>July 23, 2020</li>
+                                    </ul>
+                                </div>
+                                <div class="ltn__blog-btn">
+                                    <a href="blog-details.html">Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blog Item -->
+                <div class="col-lg-12">
+                    <div class="ltn__blog-item ltn__blog-item-3">
+                        <div class="ltn__blog-img">
+                            <a href="blog-details.html"><img src="img/blog/3.jpg" alt="#"></a>
+                        </div>
+                        <div class="ltn__blog-brief">
+                            <div class="ltn__blog-meta">
+                                <ul>
+                                    <li class="ltn__blog-author">
+                                        <a href="#"><i class="far fa-user"></i>by: Admin</a>
+                                    </li>
+                                    <li class="ltn__blog-tags">
+                                        <a href="#"><i class="fas fa-tags"></i>Services</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h3 class="ltn__blog-title"><a href="blog-details.html">Elenance, Servicing & Repairs</a></h3>
+                            <div class="ltn__blog-meta-btn">
+                                <div class="ltn__blog-meta">
+                                    <ul>
+                                        <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>August 22, 2020</li>
+                                    </ul>
+                                </div>
+                                <div class="ltn__blog-btn">
+                                    <a href="blog-details.html">Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blog Item -->
+                <div class="col-lg-12">
+                    <div class="ltn__blog-item ltn__blog-item-3">
+                        <div class="ltn__blog-img">
+                            <a href="blog-details.html"><img src="img/blog/4.jpg" alt="#"></a>
+                        </div>
+                        <div class="ltn__blog-brief">
+                            <div class="ltn__blog-meta">
+                                <ul>
+                                    <li class="ltn__blog-author">
+                                        <a href="#"><i class="far fa-user"></i>by: Admin</a>
+                                    </li>
+                                    <li class="ltn__blog-tags">
+                                        <a href="#"><i class="fas fa-tags"></i>Services</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h3 class="ltn__blog-title"><a href="blog-details.html">Healthiest Vegetables on Earth</a></h3>
+                            <div class="ltn__blog-meta-btn">
+                                <div class="ltn__blog-meta">
+                                    <ul>
+                                        <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>June 24, 2020</li>
+                                    </ul>
+                                </div>
+                                <div class="ltn__blog-btn">
+                                    <a href="blog-details.html">Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blog Item -->
+                <div class="col-lg-12">
+                    <div class="ltn__blog-item ltn__blog-item-3">
+                        <div class="ltn__blog-img">
+                            <a href="blog-details.html"><img src="img/blog/5.jpg" alt="#"></a>
+                        </div>
+                        <div class="ltn__blog-brief">
+                            <div class="ltn__blog-meta">
+                                <ul>
+                                    <li class="ltn__blog-author">
+                                        <a href="#"><i class="far fa-user"></i>by: Admin</a>
+                                    </li>
+                                    <li class="ltn__blog-tags">
+                                        <a href="#"><i class="fas fa-tags"></i>Services</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h3 class="ltn__blog-title"><a href="blog-details.html">How te Your Tires Last Longer</a></h3>
+                            <div class="ltn__blog-meta-btn">
+                                <div class="ltn__blog-meta">
+                                    <ul>
+                                        <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>June 24, 2020</li>
+                                    </ul>
+                                </div>
+                                <div class="ltn__blog-btn">
+                                    <a href="blog-details.html">Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+            </div>
+        </div>
+    </div>
+    <!-- BLOG AREA END -->
+
+    <!-- FEATURE AREA START ( Feature - 3) -->
+    <div class="ltn__feature-area before-bg-bottom-2 mb--30--- plr--5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ltn__feature-item-box-wrap ltn__border-between-column white-bg">
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6 col-12">
+                                <div class="ltn__feature-item ltn__feature-item-8">
+                                    <div class="ltn__feature-icon">
+                                        <img src="img/icons/icon-img/11.png" alt="#">
+                                    </div>
+                                    <div class="ltn__feature-info">
+                                        <h4>Curated Products</h4>
+                                        <p>Provide Curated Products for
+                                            all product over $100</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6 col-12">
+                                <div class="ltn__feature-item ltn__feature-item-8">
+                                    <div class="ltn__feature-icon">
+                                        <img src="img/icons/icon-img/12.png" alt="#">
+                                    </div>
+                                    <div class="ltn__feature-info">
+                                        <h4>Handmade</h4>
+                                        <p>We ensure the product quality
+                                            that is our main goal</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6 col-12">
+                                <div class="ltn__feature-item ltn__feature-item-8">
+                                    <div class="ltn__feature-icon">
+                                        <img src="img/icons/icon-img/13.png" alt="#">
+                                    </div>
+                                    <div class="ltn__feature-info">
+                                        <h4>Natural Food</h4>
+                                        <p>Return product within 3 days
+                                            for any product you buy</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6 col-12">
+                                <div class="ltn__feature-item ltn__feature-item-8">
+                                    <div class="ltn__feature-icon">
+                                        <img src="img/icons/icon-img/14.png" alt="#">
+                                    </div>
+                                    <div class="ltn__feature-info">
+                                        <h4>Free home delivery</h4>
+                                        <p>We ensure the product quality
+                                            that you can trust easily</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FEATURE AREA END -->
+
+    <!-- FOOTER AREA START -->
+    <footer class="ltn__footer-area  ">
+        <div class="footer-top-area  section-bg-1 plr--5">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-3 col-md-6 col-sm-6 col-12">
+                        <div class="footer-widget footer-about-widget">
+                            <div class="footer-logo">
+                                <div class="site-logo">
+                                    <img src="img/logo.png" alt="Logo">
+                                </div>
+                            </div>
+                            <p>Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is dummy text of the printing.</p>
+                            <div class="footer-address">
+                                <ul>
+                                    <li>
+                                        <div class="footer-address-icon">
+                                            <i class="icon-placeholder"></i>
+                                        </div>
+                                        <div class="footer-address-info">
+                                            <p>Brooklyn, New York, United States</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="footer-address-icon">
+                                            <i class="icon-call"></i>
+                                        </div>
+                                        <div class="footer-address-info">
+                                            <p><a href="tel:+0123-456789">+0123-456789</a></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="footer-address-icon">
+                                            <i class="icon-mail"></i>
+                                        </div>
+                                        <div class="footer-address-info">
+                                            <p><a href="mailto:example@example.com">example@example.com</a></p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="ltn__social-media mt-20">
+                                <ul>
+                                    <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
+                                    <li><a href="#" title="Youtube"><i class="fab fa-youtube"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-6 col-sm-6 col-12">
+                        <div class="footer-widget footer-menu-widget clearfix">
+                            <h4 class="footer-title">Company</h4>
+                            <div class="footer-menu">
+                                <ul>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="blog.html">Blog</a></li>
+                                    <li><a href="shop.html">All Products</a></li>
+                                    <li><a href="locations.html">Locations Map</a></li>
+                                    <li><a href="faq.html">FAQ</a></li>
+                                    <li><a href="contact.html">Contact us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-6 col-sm-6 col-12">
+                        <div class="footer-widget footer-menu-widget clearfix">
+                            <h4 class="footer-title">Services.</h4>
+                            <div class="footer-menu">
+                                <ul>
+                                    <li><a href="order-tracking.html">Order tracking</a></li>
+                                    <li><a href="wishlist.html">Wish List</a></li>
+                                    <li><a href="login.html">Login</a></li>
+                                    <li><a href="account.html">My account</a></li>
+                                    <li><a href="about.html">Terms & Conditions</a></li>
+                                    <li><a href="about.html">Promotional Offers</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-6 col-sm-6 col-12">
+                        <div class="footer-widget footer-menu-widget clearfix">
+                            <h4 class="footer-title">Customer Care</h4>
+                            <div class="footer-menu">
+                                <ul>
+                                    <li><a href="login.html">Login</a></li>
+                                    <li><a href="account.html">My account</a></li>
+                                    <li><a href="wishlist.html">Wish List</a></li>
+                                    <li><a href="order-tracking.html">Order tracking</a></li>
+                                    <li><a href="faq.html">FAQ</a></li>
+                                    <li><a href="contact.html">Contact us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 col-sm-12 col-12">
+                        <div class="footer-widget footer-newsletter-widget">
+                            <h4 class="footer-title">Newsletter</h4>
+                            <p>Subscribe to our weekly Newsletter and receive updates via email.</p>
+                            <div class="footer-newsletter">
+                                <div id="mc_embed_signup">
+                                    <form action="https://gmail.us5.list-manage.com/subscribe/post?u=dde0a42ff09e8d43cad40dc82&amp;id=72d274d15d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                        <div id="mc_embed_signup_scroll">
+                                            <div class="mc-field-group">
+                                                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email*">
+                                            </div>
+                                            <div id="mce-responses" class="clear">
+                                                <div class="response" id="mce-error-response" style="display:none"></div>
+                                                <div class="response" id="mce-success-response" style="display:none"></div>
+                                            </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_dde0a42ff09e8d43cad40dc82_72d274d15d" tabindex="-1" value=""></div>
+                                            <div class="clear">
+                                                <div class="btn-wrapper">
+                                                    <button class="theme-btn-1 btn"  type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"><i class="fas fa-location-arrow"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <h5 class="mt-30">We Accept</h5>
+                            <img src="img/icons/payment-4.png" alt="Payment Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ltn__copyright-area ltn__copyright-2 section-bg-2  ltn__border-top-2--- plr--5">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <div class="ltn__copyright-design clearfix">
+                            <p>All Rights Reserved @ Company <span class="current-year"></span></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12 align-self-center">
+                        <div class="ltn__copyright-menu text-end">
+                            <ul>
+                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="#">Claim</a></li>
+                                <li><a href="#">Privacy & Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER AREA END -->
+
+    <!-- Quick View Modal -->
+    <div class="modal fade" id="quick_view_modal" tabindex="-1" aria-labelledby="quick_view_modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" th:fragment="productContent">
+                    <h5 class="modal-title" id="quick_view_modalLabel">Quick View</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="quick-view-content">
+                    <!-- Content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL AREA START (Add To Cart Modal) -->
+    <div class="ltn__modal-area ltn__add-to-cart-modal-area">
+        <div class="modal fade" id="add_to_cart_modal" tabindex="-1">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                         <div class="ltn__quick-view-modal-inner">
+                             <div class="modal-product-item">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="modal-product-img">
+                                            <img src="img/product/1.png" alt="#">
+                                        </div>
+                                         <div class="modal-product-info">
+                                            <h5><a href="product-details.html">Vegetables Juices</a></h5>
+                                            <p class="added-cart"><i class="fa fa-check-circle"></i>  Successfully added to your Cart</p>
+                                            <div class="btn-wrapper">
+                                                <a href="cart.html" class="theme-btn-1 btn btn-effect-1">View Cart</a>
+                                                <a href="checkout.html" class="theme-btn-2 btn btn-effect-2">Checkout</a>
+                                            </div>
+                                         </div>
+                                         <!-- additional-info -->
+                                         <div class="additional-info d-none---">
+                                            <p>We want to give you <b>10% discount</b> for your first order, <br>  Use (LoveBroccoli) discount code at checkout</p>
+                                            <div class="payment-method">
+                                                <img src="img/icons/payment.png" alt="#">
+                                            </div>
+                                         </div>
+                                    </div>
+                                </div>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MODAL AREA END -->
+
+    <!-- MODAL AREA START (Wishlist Modal) -->
+    <div class="ltn__modal-area ltn__add-to-cart-modal-area">
+        <div class="modal fade" id="liton_wishlist_modal" tabindex="-1">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                         <div class="ltn__quick-view-modal-inner">
+                             <div class="modal-product-item">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="modal-product-img">
+                                            <img src="img/product/7.png" alt="#">
+                                        </div>
+                                         <div class="modal-product-info">
+                                            <h5><a href="product-details.html">Vegetables Juices</a></h5>
+                                            <p class="added-cart"><i class="fa fa-check-circle"></i>  Successfully added to your Wishlist</p>
+                                            <div class="btn-wrapper">
+                                                <a href="wishlist.html" class="theme-btn-1 btn btn-effect-1">View Wishlist</a>
+                                            </div>
+                                         </div>
+                                         <!-- additional-info -->
+                                         <div class="additional-info d-none">
+                                            <p>We want to give you <b>10% discount</b> for your first order, <br>  Use discount code at checkout</p>
+                                            <div class="payment-method">
+                                                <img src="img/icons/payment.png" alt="#">
+                                            </div>
+                                         </div>
+                                    </div>
+                                </div>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MODAL AREA END -->
+
+</div>
+<!-- Body main wrapper end -->
+
+    <!-- preloader area start -->
+    <div class="preloader d-none" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+
+    <!-- All JS Plugins -->
+    <script src="js/plugins.js"></script>
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle quick view button click
+            const quickViewBtns = document.querySelectorAll('.quick-view-btn');
+            quickViewBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const productId = this.getAttribute('data-product-id');
+                    fetchProductDetails(productId);
+                });
+            });
+
+            function fetchProductDetails(productId) {
+                // Here you would make an AJAX call to fetch product details
+                fetch(`/product-details-ajax/${productId}`)
+                    .then(response => response.text())
+                    .then(html => {
+                        document.getElementById('quick-view-content').innerHTML = html;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching product details:', error);
+                    });
+            }
+        });
+
+        document.getElementById("feedbackForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const feedback = {
+                name: document.getElementById("name").value,
+                message: document.getElementById("message").value
+            };
+
+            const res = await fetch("/api/feedbacks", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(feedback)
+            });
+
+            if (res.ok) {
+                document.getElementById("feedbackForm").reset();
+                document.getElementById("feedbackSuccess").style.display = "block";
+                setTimeout(() => {
+                    document.getElementById("feedbackSuccess").style.display = "none";
+                }, 2000);
+                loadFeedbacks(); // Reload feedbacks
+            }
+        });
+
+        async function loadFeedbacks() {
+            const response = await fetch("/api/feedbacks");
+            const feedbacks = await response.json();
+            const container = document.getElementById("feedbacksContainer");
+            container.innerHTML = "";
+
+            feedbacks.reverse().forEach(feedback => {
+                const html = `
+                <div class="col-lg-12 mb-3">
+                    <div class="ltn__testimonial-item ltn__testimonial-item-4">
+                        <div class="ltn__testimoni-info">
+                            <p>${feedback.message}</p>
+                            <h4>${feedback.name}</h4>
+                        </div>
+                        <div class="ltn__testimoni-bg-icon">
+                            <i class="far fa-comments"></i>
+                        </div>
+                    </div>
+                </div>
+            `;
+                container.innerHTML += html;
+            });
+        }
+
+        // Load all feedbacks when the page loads
+        window.onload = loadFeedbacks;
+    </script>
+
+</body>
+
+</html>
+
